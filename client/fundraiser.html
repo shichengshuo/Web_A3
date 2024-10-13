@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundraiser</title>
+    <link rel="stylesheet" href="./static/style.css">
+</head>
+
+<body id="details">
+    <header>
+        <nav>
+            <div class="logo">
+                Crowdfunding
+            </div>
+            <div>
+                <a href="./home.html" class="link">Home</a>
+                <a href="./search.html" class="link">Search</a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <h3 class="title">Fundraiser Details</h3>
+    </main>
+    <main>
+        <div id="cardList">
+        </div>
+    </main>
+    <main>
+        <h3 class="title">Donations</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>Giver</th>
+                    <th>Amount</th>
+                    <th>Date</th>
+                    <th>Fundraiser</th>
+                </tr>
+            </thead>
+            <tbody id="donationList">
+
+            </tbody>
+        </table>
+    </main>
+    <script src="./static/ajax.js"> </script>
+    <script src="./static/index.js"></script>
+    <script>
+        initFundraiserDetail()
+    </script>
+</body>
+
+</html>

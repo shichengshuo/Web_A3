@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+    <link rel="stylesheet" href="./static/style.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                Crowdfunding
+            </div>
+            <div>
+                <a href="./home.html" class="link">Home</a>
+                <a href="./search.html" class="link">Search</a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <h3 class="title">Search for Fundraisers</h3>
+    </main>
+    <main class="search">
+        <div>
+            <label>Organizer</label>
+            <input type="text" id="organizer">
+            <label>City</label>
+            <input type="text" id="city">
+            <label>Category</label>
+            <select id="category">
+                <option selected value="">Choose...</option>
+            </select>
+        </div>
+        <div>
+            <button type="button" onclick="searchFundraisers()">Search</button>
+            <button type="button" onclick="reset()">Reset</button>
+        </div>
+    </main>
+    <main>
+        <div id="cardList"> </div>
+    </main>
+    <script src="./static/ajax.js"> </script>
+    <script src="./static/index.js"></script>
+    <script>
+        initSearch()
+    </script>
+</body>
+
+</html>
