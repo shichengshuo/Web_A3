@@ -8,9 +8,9 @@ function renderCategorieList(data) {
         category.appendChild(option)
     }
 }
-// get Categorie
+// Get Categorie
 ajax.get('/categories').then(data => renderCategorieList(data))
-// get Fundraisers
+// Get Fundraisers
 function getFundraisersTable() {
     ajax.get('/fundraisers').then(data => renderFundraisersTable(data))
 }
@@ -26,7 +26,7 @@ const overlay = document.getElementById('overlay')
 
 
 
-// close form
+// Close the form
 function closeForm() {
     overlay.className = '';
     for (const item of inputs) {
@@ -37,10 +37,10 @@ function closeForm() {
         }
     }
 }
-// Data for Fundraisers needs to be edited
+// Data of Fundraisers need to be edited
 let editFundraiserData = null;
 
-// Save Fundraisers
+// Save the Fundraisers
 const fundraisersSave = document.getElementById('fundraisersSave')
 fundraisersSave.onclick = async () => {
     const data = {}
@@ -62,12 +62,12 @@ fundraisersSave.onclick = async () => {
         const message = await ajax.put(`/fundraiser/${editFundraiserData.FUNDRAISER_ID}`, data);
         alert(message)
     }
-    getFundraisersTable(); // Refresh list
+    getFundraisersTable(); // Refresh the list
     closeForm()
 }
 
 
-// edit Fundraisers
+// Edit the Fundraisers
 const editFundraiser = async (id) => {
     fundraiserTitle.innerHTML = "Edit"
     editFundraiserData = await ajax.get(`/fundraiser/${id}`);
@@ -83,14 +83,14 @@ const editFundraiser = async (id) => {
 };
 
 
-// Open form
+// Open the form
 const createEl = document.getElementById('fundraisersCreate')
 createEl.onclick = function () {
     fundraiserTitle.innerText = "Create"
     overlay.className = 'open';
 }
 
-// delete Fundraisers
+// Delete the Fundraisers
 const deleteFundraiser = (id) => {
     if (window.confirm('Confirm delete?')) {
         ajax.delete(`/fundraiser/${id}`).then(message => {
@@ -138,5 +138,5 @@ const renderFundraisersTable = (fundraisers) => {
         });
     });
 };
-// get
+// Get
 getFundraisersTable()
