@@ -5,7 +5,7 @@ links.forEach(link => {
         link.classList.add('active');
     }
 });
-// 渲染
+// render
 const fundraiserList = document.getElementById('cardList')
 function renderFundraiserList(fundraisers, showDetail = true, showDonate = true) {
     fundraiserList.innerHTML = '';
@@ -50,13 +50,13 @@ function initHome() {
     ajax.get('/fundraisers').then(data => renderFundraiserList(data))
 }
 
-// 搜索的内容
+// Search content
 const searchForm = {
     organizer: document.getElementById('organizer'),
     city: document.getElementById('city'),
     category: document.getElementById('category'),
 }
-// 搜索
+// Search
 function searchFundraisers() {
     const { organizer, city, category } = searchForm
     if (!organizer.value && !city.value && !category.value) {
@@ -72,7 +72,7 @@ function reset() {
     }
     ajax.get('/fundraisers').then(data => renderFundraiserList(data))
 }
-// 搜索
+// Search
 function initSearch() {
     ajax.get('/fundraisers').then(data => renderFundraiserList(data))
     ajax.get('/categories').then(data => renderCategorieList(data))
@@ -81,16 +81,16 @@ function initSearch() {
 const urlParams = new URLSearchParams(window.location.search);
 const fundraiserId = urlParams.get('id');
 const donationList = document.getElementById('donationList')
-// 渲染捐赠列表
+// Render donation list
 function renderDonationList(donations) {
-    donationList.innerHTML = ''; // 清空当前表格
+    donationList.innerHTML = ''; // Clear current table
     donations.forEach(donation => {
         const row = document.createElement('tr');
         row.innerHTML = `<td>${donation.DONATION_ID}</td> <td>${donation.GIVER}</td> <td>${donation.AMOUNT}</td> <td>${donation.DATE}</td> <td>${donation.FUNDRAISER.CAPTION}</td> `;
         donationList.appendChild(row);
     });
 }
-// 详情
+// details
 function initFundraiserDetail() {
     ajax.get(`/fundraiser/${fundraiserId}`).then(data => renderFundraiserList([data], false))
     ajax.get(`/donation/${fundraiserId}`).then(data => renderDonationList(data))
@@ -98,7 +98,7 @@ function initFundraiserDetail() {
 
 
 let DonationFundraiser = {}
-// 捐赠
+// donate
 function createDonation() {
     const inputs = document.querySelectorAll('.input')
     const data = { FUNDRAISER_ID: DonationFundraiser.FUNDRAISER_ID }
@@ -116,7 +116,7 @@ function createDonation() {
         window.location.reload()
     })
 }
-// 捐赠页面
+// Donation page
 function initDonation() {
     ajax.get(`/fundraiser/${fundraiserId}`).then(data => {
         DonationFundraiser = data
