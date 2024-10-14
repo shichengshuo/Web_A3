@@ -1,5 +1,5 @@
 const category = document.getElementById('category')
-// 渲染form里的Categorie
+// Categorie in render form
 function renderCategorieList(data) {
     for (const item of data) {
         const option = document.createElement('option')
@@ -8,9 +8,9 @@ function renderCategorieList(data) {
         category.appendChild(option)
     }
 }
-// 获取Categorie
+// get Categorie
 ajax.get('/categories').then(data => renderCategorieList(data))
-// 获取Fundraisers
+// get Fundraisers
 function getFundraisersTable() {
     ajax.get('/fundraisers').then(data => renderFundraisersTable(data))
 }
@@ -26,7 +26,7 @@ const overlay = document.getElementById('overlay')
 
 
 
-// 关闭form
+// close form
 function closeForm() {
     overlay.className = '';
     for (const item of inputs) {
@@ -37,10 +37,10 @@ function closeForm() {
         }
     }
 }
-// 需要编辑Fundraisers的数据
+// Data for Fundraisers needs to be edited
 let editFundraiserData = null;
 
-// 保存Fundraisers
+// Save Fundraisers
 const fundraisersSave = document.getElementById('fundraisersSave')
 fundraisersSave.onclick = async () => {
     const data = {}
@@ -62,12 +62,12 @@ fundraisersSave.onclick = async () => {
         const message = await ajax.put(`/fundraiser/${editFundraiserData.FUNDRAISER_ID}`, data);
         alert(message)
     }
-    getFundraisersTable(); // 刷新列表
+    getFundraisersTable(); // Refresh list
     closeForm()
 }
 
 
-// 编辑Fundraisers
+// edit Fundraisers
 const editFundraiser = async (id) => {
     fundraiserTitle.innerHTML = "Edit"
     editFundraiserData = await ajax.get(`/fundraiser/${id}`);
@@ -83,28 +83,28 @@ const editFundraiser = async (id) => {
 };
 
 
-// 打开表单
+// Open form
 const createEl = document.getElementById('fundraisersCreate')
 createEl.onclick = function () {
     fundraiserTitle.innerText = "Create"
     overlay.className = 'open';
 }
 
-// 删除Fundraisers
+// delete Fundraisers
 const deleteFundraiser = (id) => {
     if (window.confirm('Confirm delete?')) {
         ajax.delete(`/fundraiser/${id}`).then(message => {
             alert(message)
-            getFundraisersTable(); // 刷新列表
+            getFundraisersTable(); // Refresh the list
         });
     }
 };
 
 
-// 填充Fundraisers表格
+// Fill in the Fundraisers form
 const fundraisersTable = document.getElementById('fundraiserTable')
 const renderFundraisersTable = (fundraisers) => {
-    fundraisersTable.innerHTML = ''; // 清空当前表格
+    fundraisersTable.innerHTML = ''; // Clear the current table
     fundraisers.forEach(fundraiser => {
         const row = document.createElement('tr');
         row.innerHTML = `
@@ -122,7 +122,7 @@ const renderFundraisersTable = (fundraisers) => {
         `;
         fundraisersTable.appendChild(row);
     });
-    // 给按钮添加事件
+    // Add an event to the button
     const edits = document.querySelectorAll('.edit');
     const deletes = document.querySelectorAll('.delete');
     edits.forEach(button => {
@@ -138,5 +138,5 @@ const renderFundraisersTable = (fundraisers) => {
         });
     });
 };
-// 获取
+// get
 getFundraisersTable()
