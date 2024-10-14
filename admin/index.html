@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <link rel="stylesheet" href="./static/style.css">
+</head>
+
+<body>
+    <header>
+        Crowdfunding Admin
+    </header>
+    <section style="padding: 20px;">
+        <button id="fundraisersCreate">Create</button>
+        <table>
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>Organizer</th>
+                    <th class="Caption">Caption</th>
+                    <th>Category</th>
+                    <th>City</th>
+                    <th>Target Funding</th>
+                    <th>Current Funding</th>
+                    <th>Operate</th>
+                </tr>
+            </thead>
+            <tbody id="fundraiserTable">
+            </tbody>
+        </table>
+    </section>
+    <div id="overlay">
+        <div id="fundraiserForm">
+            <div class="head">
+                <h3 id="fundraiserTitle">Save</h3>
+                <div onclick="closeForm()" class="close">×</div>
+            </div>
+            <div id="form">
+                <div class="input-item">
+                    <label>organizer</label>
+                    <input class="input" placeholder="organizer" type="text" name="ORGANIZER">
+                </div>
+                <div class="input-item">
+                    <label>caption</label>
+                    <input class="input" placeholder="caption" type="text" name="CAPTION">
+                </div>
+                <div class="input-item">
+                    <label>category</label>
+                    <select id="category" class="input" name="CATEGORY_ID">
+                        <option selected value="">Choose...</option>
+                    </select>
+                </div>
+                <div class="input-item">
+                    <label>city</label>
+                    <input class="input" placeholder="city" type="text" name="CITY">
+                </div>
+                <div class="input-item">
+                    <label>target funding</label>
+                    <input class="input" placeholder="target funding" type="number" name="TARGET_FUNDING">
+                </div>
+                <div class="input-item">
+                    <label>current funding</label>
+                    <input class="input" placeholder="current funding" type="number" name="CURRENT_FUNDING">
+                </div>
+                <div class="input-item">
+                    <label>active</label>
+                    <div style="flex:1">
+                        <input class="input" type="checkbox" name="ACTIVE" style="width: auto;">
+                    </div>
+                </div>
+            </div>
+            <div style="float: right;">
+                <button id="fundraisersSave" style="margin-right: 10px;"> Save </button>
+                <button onclick="closeForm()">Cancel</button>
+            </div>
+        </div>
+    </div>
+    <script src="./static/ajax.js"></script>
+    <script src="./static/admin.js"></script>
+</body>
+
+</html>
